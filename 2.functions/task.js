@@ -1,10 +1,23 @@
 // Задание 1
 function getArrayParams(arr) {
-  let min, max, sum, avg;
+  let min = arr[0];
+  let max = arr[0];
+  let sum = 0;
 
-  // Ваш код
-
-  return { min: min, max: max, avg: avg };
+  for(let i = 0; i < arr.length; i++) {
+   if(min > arr[i]) {
+      min = arr[i];
+      sum += min;
+   }
+   if(max < arr[i]) {
+      max = arr[i];
+      sum += max;
+   }
+  }
+  let avg = sum / arr.length;
+  let sar = avg.toFixed(2);
+  sar = Number(sar);
+  return { min: min, max: max, avg: sar };
 }
 
 // Задание 2
