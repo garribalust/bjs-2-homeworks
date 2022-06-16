@@ -27,19 +27,32 @@ function worker(arr) {
 }
 
 function makeWork(arrOfArr, func) {
-   let max = arrOfArr[0];
-   func();
+   let max = func(arrOfArr[0]);
    for(let i = 0; i < arrOfArr.length; i++) {
-      arrOfArr.push(func(arrOfArr[i]))
-      if(max < arrOfArr[i]) {
-         max = arrOfArr[i];
+      let sumWorker = func(arrOfArr[i]);
+      if(max < sumWorker) {
+         max = sumWorker;
       }
    }
-  
+   
    return max;
 }
 
 // Задание 3
 function worker2(arr) {
-  // Ваш код
+   let min = arr[0];
+   let max = arr[0];
+   let sum = 0;
+ 
+   for(let i = 0; i < arr.length; i++) {
+    sum += min, max;
+    if(min > arr[i]) {
+       min = arr[i];
+    }
+    if(max < arr[i]) {
+       max = arr[i];
+    }
+   }
+   let difference = max - min;
+   return Math.abs(difference);
 }
