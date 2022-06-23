@@ -22,8 +22,23 @@ Student.prototype.addMark = function (mark) {
       }
  }
 
- Student.prototype.addMarks = function (mark1,mark2,mark3...) {
-   this.subject = subjectName;
+ Student.prototype.addMarks = function (...mark1) {
+   this.marks = mark1;
  }
 
-// ваш код для остальных методов
+ Student.prototype.getAverage = function () {
+   
+   return this.marks.reduce((acc, item, index, marks) => {
+      acc += item;
+      if(index === marks.length - 1) {
+         return acc / marks.length;
+      }
+      return acc;
+   }, 0)
+ }
+
+ Student.prototype.exclude = function (reason) {
+   delete this.subject;
+   delete this.marks;
+   this.excluded = reason;
+ }
