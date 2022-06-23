@@ -18,6 +18,9 @@ function solveEquation(a, b, c) {
 
 function calculateTotalMortgage(percent, contribution, amount, date) {
   let totalAmount;
+  let bodyCredit = amount - contribution;
+  let difference = Math.ceil((date - new Date) / 1000 / 3600 / 24 / 30.5);
+  let payment = bodyCredit * 
 
   // код для задачи №2 писать здесь
 
