@@ -10,21 +10,21 @@ class PrintEditionItem {
    }
 
    fix() {
-      return this.state * 1.5;
+      this.state *= 1.5;
    }
 
-   set out(newState){
-      if(newState < 0){
-         this.state = 0;
-      }else if(newState > 100){
-         this.state = 100;
-      }else {
-         this.state = newState;
-      }   
+   set state(newState){
+         if(newState < 0){
+            this._state = 0;
+         } else if(newState > 100) {
+         this._state = 100;
+         } else {
+            this._state = newState;
+         }
    }
 
-   get out(){
-      return this.state;
+   get state(){
+      return this._state;
    }
 }
 
@@ -36,7 +36,7 @@ class Magazine extends PrintEditionItem {
 }
 
 class Book extends PrintEditionItem {
-   constructor(name, releaseDate, pagesCount, author){
+   constructor(author, name, releaseDate, pagesCount){
       super(name, releaseDate, pagesCount);
       this.author = author;
       this.type = 'book';
@@ -44,22 +44,22 @@ class Book extends PrintEditionItem {
 }
 
 class NovelBook extends Book {
-   constructor(name, releaseDate, pagesCount, author){
-      super(name, releaseDate, pagesCount, author);
+   constructor(author, name, releaseDate, pagesCount){
+      super(author, name, releaseDate, pagesCount);
       this.type = 'novel';
    }
 }
 
 class FantasticBook extends Book {
-   constructor(name, releaseDate, pagesCount, author){
-      super(name, releaseDate, pagesCount, author);
+   constructor(author, name, releaseDate, pagesCount){
+      super(author, name, releaseDate, pagesCount);
       this.type = 'fantastic';
    }
 }
 
 class DetectiveBook extends Book {
-   constructor(name, releaseDate, pagesCount, author){
-      super(name, releaseDate, pagesCount, author);
+   constructor(author, name, releaseDate, pagesCount){
+      super(author, name, releaseDate, pagesCount);
       this.type = 'detective';
    }
 }
@@ -79,9 +79,12 @@ class Library {
    }
 
    findBookBy(type, value) {
-      this.type = type;
-      this.value = value;
-
+      this.books.filter((book) => {
+         if(book[type] === value) {
+            return book.type;
+      } 
+      return null;
+   })
    }
 
    giveBookByName(bookName) {
