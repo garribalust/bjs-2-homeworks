@@ -72,13 +72,23 @@ class Library {
       this.books = [];
    }
 
-   addBook({book}) {
-      if(this.state > 30) {
-         this.books.push({book})
+   addBook(book) {
+      if(book.state > 30) {
+         this.books.push(book);
       }
    }
 
    findBookBy(type, value) {
+      this.type = type;
+      this.value = value;
 
+   }
+
+   giveBookByName(bookName) {
+      if(bookName === this.name){
+         this.books.pop();
+      } else {
+         return null;
+      }
    }
 }
