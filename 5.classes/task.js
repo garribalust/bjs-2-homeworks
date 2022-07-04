@@ -81,7 +81,7 @@ class Library {
    findBookBy(type, value) {
       let key = this.books.filter((book) => book[type] === value);
       if(key.length !== 0 ) {
-            return key[0].name;
+            return key[0];
          } else {
             return null;
          }
@@ -91,7 +91,7 @@ class Library {
       let findBook = this.books.find(book => book.name === bookName); 
       let giveBook = this.books.indexOf(findBook);
       if(giveBook !== -1){
-         this.books.splice(giveBook, 1);
+         return this.books.splice(giveBook, 1, [0]);
       } else {
          return null;
       }
